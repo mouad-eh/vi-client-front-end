@@ -18,7 +18,9 @@ import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props
 // actions
 import { loginUser, socialLogin, resetLoginFlag } from "../../store/actions";
 
-import logoLight from "../../assets/images/logo-light.png";
+// import logoLight from "../../assets/images/logo-light.png";
+import logo from "../../assets/images/ic_logo.png"
+
 //Import config
 import { facebook, google } from "../../config";
 //import images
@@ -62,38 +64,38 @@ const Login = (props) => {
     }));
 
 
-    const signIn = (res, type) => {
-        if (type === "google" && res) {
-            const postData = {
-                name: res.profileObj.name,
-                email: res.profileObj.email,
-                token: res.tokenObj.access_token,
-                idToken: res.tokenId,
-            };
-            dispatch(socialLogin(postData, props.history, type));
-        } else if (type === "facebook" && res) {
-            const postData = {
-                name: res.name,
-                email: res.email,
-                token: res.accessToken,
-                idToken: res.tokenId,
-            };
-            dispatch(socialLogin(postData, props.history, type));
-        }
-    };
+    // const signIn = (res, type) => {
+    //     if (type === "google" && res) {
+    //         const postData = {
+    //             name: res.profileObj.name,
+    //             email: res.profileObj.email,
+    //             token: res.tokenObj.access_token,
+    //             idToken: res.tokenId,
+    //         };
+    //         dispatch(socialLogin(postData, props.history, type));
+    //     } else if (type === "facebook" && res) {
+    //         const postData = {
+    //             name: res.name,
+    //             email: res.email,
+    //             token: res.accessToken,
+    //             idToken: res.tokenId,
+    //         };
+    //         dispatch(socialLogin(postData, props.history, type));
+    //     }
+    // };
 
-    //handleGoogleLoginResponse
-    const googleResponse = response => {
-        signIn(response, "google");
-    };
+    // //handleGoogleLoginResponse
+    // const googleResponse = response => {
+    //     signIn(response, "google");
+    // };
 
-    //handleTwitterLoginResponse
-    // const twitterResponse = e => {}
+    // //handleTwitterLoginResponse
+    // // const twitterResponse = e => {}
 
-    //handleFacebookLoginResponse
-    const facebookResponse = response => {
-        signIn(response, "facebook");
-    };
+    // //handleFacebookLoginResponse
+    // const facebookResponse = response => {
+    //     signIn(response, "facebook");
+    // };
 
     useEffect(() => {
         setTimeout(() => {
@@ -101,7 +103,7 @@ const Login = (props) => {
         }, 3000);
     }, [dispatch, error]);
 
-    document.title = "Basic SignIn | Velzon - React Admin & Dashboard Template";
+    document.title = "ViClient- suivi commandes clients";
     return (
         <React.Fragment>
             <ParticlesAuth>
@@ -112,10 +114,10 @@ const Login = (props) => {
                                 <div className="text-center mt-sm-5 mb-4 text-white-50">
                                     <div>
                                         <Link to="/" className="d-inline-block auth-logo">
-                                            <img src={logoLight} alt="" height="20" />
+                                            <img src={logo} alt="" height="80" />
                                         </Link>
                                     </div>
-                                    <p className="mt-3 fs-15 fw-medium">Premium Admin & Dashboard Template</p>
+                                    <p className="mt-3 fs-15 fw-medium">Suivi Commandes Clients</p>
                                 </div>
                             </Col>
                         </Row>
@@ -125,8 +127,8 @@ const Login = (props) => {
                                 <Card className="mt-4">
                                     <CardBody className="p-4">
                                         <div className="text-center mt-2">
-                                            <h5 className="text-primary">Welcome Back !</h5>
-                                            <p className="text-muted">Sign in to continue to Velzon.</p>
+                                            <h5 className="text-primary">Bienvenue !</h5>
+                                            <p className="text-muted">Connectez-vous pour continuer</p>
                                         </div>
                                         {error && error ? (<Alert color="danger"> {error} </Alert>) : null}
                                         <div className="p-2 mt-4">
@@ -143,7 +145,7 @@ const Login = (props) => {
                                                     <Input
                                                         name="email"
                                                         className="form-control"
-                                                        placeholder="Enter email"
+                                                        placeholder="Saisissez votre adress e-mail"
                                                         type="email"
                                                         onChange={validation.handleChange}
                                                         onBlur={validation.handleBlur}
@@ -158,17 +160,17 @@ const Login = (props) => {
                                                 </div>
 
                                                 <div className="mb-3">
-                                                    <div className="float-end">
+                                                    {/* <div className="float-end">
                                                         <Link to="/forgot-password" className="text-muted">Forgot password?</Link>
-                                                    </div>
-                                                    <Label className="form-label" htmlFor="password-input">Password</Label>
+                                                    </div> */}
+                                                    <Label className="form-label" htmlFor="password-input">Mot de passe</Label>
                                                     <div className="position-relative auth-pass-inputgroup mb-3">
                                                         <Input
                                                             name="password"
                                                             value={validation.values.password || ""}
                                                             type="password"
                                                             className="form-control pe-5"
-                                                            placeholder="Enter Password"
+                                                            placeholder="Saisissez votre mot de passe"
                                                             onChange={validation.handleChange}
                                                             onBlur={validation.handleBlur}
                                                             invalid={
@@ -182,16 +184,16 @@ const Login = (props) => {
                                                     </div>
                                                 </div>
 
-                                                <div className="form-check">
+                                                {/* <div className="form-check">
                                                     <Input className="form-check-input" type="checkbox" value="" id="auth-remember-check" />
                                                     <Label className="form-check-label" htmlFor="auth-remember-check">Remember me</Label>
-                                                </div>
+                                                </div> */}
 
                                                 <div className="mt-4">
-                                                    <Button color="success" className="btn btn-success w-100" type="submit">Sign In</Button>
+                                                    <Button color="success" className="btn btn-success w-100" type="submit">Connextion</Button>
                                                 </div>
 
-                                                <div className="mt-4 text-center">
+                                                {/* <div className="mt-4 text-center">
                                                     <div className="signin-other-title">
                                                         <h5 className="fs-13 mb-4 title">Sign In with</h5>
                                                     </div>
@@ -230,15 +232,15 @@ const Login = (props) => {
                                                         <Button color="dark" className="btn-icon"><i className="ri-github-fill fs-16"></i></Button>{" "}
                                                         <Button color="info" className="btn-icon"><i className="ri-twitter-fill fs-16"></i></Button>
                                                     </div>
-                                                </div>
+                                                </div> */}
                                             </Form>
                                         </div>
                                     </CardBody>
                                 </Card>
 
-                                <div className="mt-4 text-center">
+                                {/* <div className="mt-4 text-center">
                                     <p className="mb-0">Don't have an account ? <Link to="/register" className="fw-semibold text-primary text-decoration-underline"> Signup </Link> </p>
-                                </div>
+                                </div> */}
 
                             </Col>
                         </Row>
