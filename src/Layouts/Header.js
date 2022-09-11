@@ -16,12 +16,14 @@ import FullScreenDropdown from '../Components/Common/FullScreenDropdown';
 import NotificationDropdown from '../Components/Common/NotificationDropdown';
 import ProfileDropdown from '../Components/Common/ProfileDropdown';
 import LightDark from '../Components/Common/LightDark';
+import HelpDropdown from '../Components/Common/HelpDropdown';
+import MessageDropdown from '../Components/Common/MessageDropdown';
 
 const Header = ({ onChangeLayoutMode, layoutModeType, headerClass }) => {
-    const [search, setSearch] = useState(false);
-    const toogleSearch = () => {
-        setSearch(!search);
-    };
+    // const [search, setSearch] = useState(false);
+    // const toogleSearch = () => {
+    //     setSearch(!search);
+    // };
 
     const toogleMenuBtn = () => {
         var windowSize = document.documentElement.clientWidth;
@@ -29,10 +31,10 @@ const Header = ({ onChangeLayoutMode, layoutModeType, headerClass }) => {
         if (windowSize > 767)
             document.querySelector(".hamburger-icon").classList.toggle('open');
 
-        //For collapse horizontal menu
-        if (document.documentElement.getAttribute('data-layout') === "horizontal") {
-            document.body.classList.contains("menu") ? document.body.classList.remove("menu") : document.body.classList.add("menu");
-        }
+        // //For collapse horizontal menu
+        // if (document.documentElement.getAttribute('data-layout') === "horizontal") {
+        //     document.body.classList.contains("menu") ? document.body.classList.remove("menu") : document.body.classList.add("menu");
+        // }
 
         //For collapse vertical menu
         if (document.documentElement.getAttribute('data-layout') === "vertical") {
@@ -48,10 +50,10 @@ const Header = ({ onChangeLayoutMode, layoutModeType, headerClass }) => {
             }
         }
 
-        //Two column menu
-        if (document.documentElement.getAttribute('data-layout') === "twocolumn") {
-            document.body.classList.contains('twocolumn-panel') ? document.body.classList.remove('twocolumn-panel') : document.body.classList.add('twocolumn-panel');
-        }
+        // //Two column menu
+        // if (document.documentElement.getAttribute('data-layout') === "twocolumn") {
+        //     document.body.classList.contains('twocolumn-panel') ? document.body.classList.remove('twocolumn-panel') : document.body.classList.add('twocolumn-panel');
+        // }
     };
     return (
         <React.Fragment>
@@ -59,8 +61,8 @@ const Header = ({ onChangeLayoutMode, layoutModeType, headerClass }) => {
                 <div className="layout-width">
                     <div className="navbar-header">
                         <div className="d-flex">
-
-                            <div className="navbar-brand-box horizontal-logo">
+                            {/* this div is needed only in horizontal layout */}
+                            {/* <div className="navbar-brand-box horizontal-logo">
                                 <Link to="/" className="logo logo-dark">
                                     <span className="logo-sm">
                                         <img src={logoSm} alt="" height="22" />
@@ -78,7 +80,7 @@ const Header = ({ onChangeLayoutMode, layoutModeType, headerClass }) => {
                                         <img src={logoLight} alt="" height="17" />
                                     </span>
                                 </Link>
-                            </div>
+                            </div> */}
 
                             <button
                                 onClick={toogleMenuBtn}
@@ -93,12 +95,12 @@ const Header = ({ onChangeLayoutMode, layoutModeType, headerClass }) => {
                             </button>
 
 
-                            <SearchOption />
+                            {/* <SearchOption /> */}
                         </div>
 
                         <div className="d-flex align-items-center">
 
-                            <Dropdown isOpen={search} toggle={toogleSearch} className="d-md-none topbar-head-dropdown header-item">
+                            {/* <Dropdown isOpen={search} toggle={toogleSearch} className="d-md-none topbar-head-dropdown header-item">
                                 <DropdownToggle type="button" tag="button" className="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle">
                                     <i className="bx bx-search fs-22"></i>
                                 </DropdownToggle>
@@ -114,16 +116,17 @@ const Header = ({ onChangeLayoutMode, layoutModeType, headerClass }) => {
                                         </div>
                                     </Form>
                                 </DropdownMenu>
-                            </Dropdown>
-
+                            </Dropdown> */}
+                            {/* HelpDropdown */}
+                            <HelpDropdown />
                             {/* LanguageDropdown */}
-                            <LanguageDropdown />
+                            {/* <LanguageDropdown /> */}
 
                             {/* WebAppsDropdown */}
-                            <WebAppsDropdown />
+                            {/* <WebAppsDropdown /> */}
 
                             {/* MyCartDropdwon */}
-                            <MyCartDropdown />
+                            {/* <MyCartDropdown /> */}
 
                             {/* FullScreenDropdown */}
                             <FullScreenDropdown />
@@ -133,6 +136,9 @@ const Header = ({ onChangeLayoutMode, layoutModeType, headerClass }) => {
                                 layoutMode={layoutModeType}
                                 onChangeLayoutMode={onChangeLayoutMode}
                             />
+
+                            {/* MessageDropdown */}
+                            <MessageDropdown />
 
                             {/* NotificationDropdown */}
                             <NotificationDropdown />

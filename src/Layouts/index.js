@@ -54,6 +54,7 @@ const Layout = (props) => {
     /*
     layout settings
     */
+   // we will not need this
     useEffect(() => {
         if (
             layoutType ||
@@ -95,7 +96,8 @@ const Layout = (props) => {
         }
     };
     
-    // class add remove in header 
+    // class add remove in header
+    // this one is used to add shadow to header when scrolling 
     useEffect(() => {
         window.addEventListener("scroll", scrollNavigation, true);
     });

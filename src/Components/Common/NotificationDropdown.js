@@ -21,20 +21,20 @@ const NotificationDropdown = () => {
     };
 
     //Tab 
-    const [activeTab, setActiveTab] = useState('1');
-    const toggleTab = (tab) => {
-        if (activeTab !== tab) {
-            setActiveTab(tab);
-        }
-    };
+    // const [activeTab, setActiveTab] = useState('1');
+    // const toggleTab = (tab) => {
+    //     if (activeTab !== tab) {
+    //         setActiveTab(tab);
+    //     }
+    // };
     return (
         <React.Fragment>
             <Dropdown isOpen={isNotificationDropdown} toggle={toggleNotificationDropdown} className="topbar-head-dropdown ms-1 header-item">
                 <DropdownToggle type="button" tag="button" className="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle">
                     <i className='bx bx-bell fs-22'></i>
-                    <span
+                    {/* <span
                         className="position-absolute topbar-badge fs-10 translate-middle badge rounded-pill bg-danger">3<span
-                            className="visually-hidden">unread messages</span></span>
+                            className="visually-hidden">unread messages</span></span> */}
                 </DropdownToggle>
                 <DropdownMenu className="dropdown-menu-lg dropdown-menu-end p-0">
                     <div className="dropdown-head bg-primary bg-pattern rounded-top">
@@ -49,7 +49,7 @@ const NotificationDropdown = () => {
                             </Row>
                         </div>
 
-                        <div className="px-2 pt-2">
+                        {/* <div className="px-2 pt-2">
                             <Nav className="nav-tabs dropdown-tabs nav-tabs-custom">
                                 <NavItem>
                                     <NavLink
@@ -79,12 +79,12 @@ const NotificationDropdown = () => {
                                     </NavLink>
                                 </NavItem>
                             </Nav>
-                        </div>
+                        </div> */}
 
                     </div>
 
-                    <TabContent activeTab={activeTab}>
-                        <TabPane tabId="1" className="py-2 ps-2">
+                    {/* <TabContent activeTab={activeTab}> */}
+                        {/* <TabPane tabId="1" className="py-2 ps-2"> */}
                             <SimpleBar style={{ maxHeight: "300px" }} className="pe-2">
                                 <div className="text-reset notification-item d-block dropdown-item position-relative">
                                     <div className="d-flex">
@@ -129,7 +129,7 @@ const NotificationDropdown = () => {
                                         </div>
                                         <div className="px-2 fs-15">
                                             <div className="form-check notification-check">
-                                                <input className="form-check-input" type="checkbox" value="" id="all-notification-check02"/>
+                                                <input className="form-check-input" type="checkbox" value="" id="all-notification-check02" />
                                                 <label className="form-check-label" htmlFor="all-notification-check02"></label>
                                             </div>
                                             {/* <input className="form-check-input" type="checkbox" /> */}
@@ -186,123 +186,12 @@ const NotificationDropdown = () => {
                                 </div>
 
                                 <div className="my-3 text-center">
-                                    <button type="button" className="btn btn-soft-success waves-effect waves-light">View
-                                        All Notifications <i className="ri-arrow-right-line align-middle"></i></button>
+                                    <button type="button" className="btn btn-soft-success waves-effect waves-light">Voir Tous Les Notification <i className="ri-arrow-right-line align-middle"></i></button>
                                 </div>
                             </SimpleBar>
 
-                        </TabPane>
-
-                        <TabPane tabId="2" className="py-2 ps-2">
-                            <SimpleBar style={{ maxHeight: "300px" }} className="pe-2">
-                                <div className="text-reset notification-item d-block dropdown-item">
-                                    <div className="d-flex">
-                                        <img src={avatar3}
-                                            className="me-3 rounded-circle avatar-xs" alt="user-pic" />
-                                        <div className="flex-1">
-                                            <Link to="#" className="stretched-link"><h6 className="mt-0 mb-1 fs-13 fw-semibold">James Lemire</h6></Link>
-                                            <div className="fs-13 text-muted">
-                                                <p className="mb-1">We talked about a project on linkedin.</p>
-                                            </div>
-                                            <p className="mb-0 fs-11 fw-medium text-uppercase text-muted">
-                                                <span><i className="mdi mdi-clock-outline"></i> 30 min ago</span>
-                                            </p>
-                                        </div>
-                                        <div className="px-2 fs-15">
-                                        <div className="form-check notification-check">
-                                                    <input className="form-check-input" type="checkbox" value="" id="messages-notification-check01" />
-                                                    <label className="form-check-label" htmlFor="messages-notification-check01"></label>
-                                                </div>
-                                            {/* <input className="form-check-input" type="checkbox" /> */}
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="text-reset notification-item d-block dropdown-item">
-                                    <div className="d-flex">
-                                        <img src={avatar2}
-                                            className="me-3 rounded-circle avatar-xs" alt="user-pic" />
-                                        <div className="flex-1">
-                                            <Link to="#" className="stretched-link"><h6 className="mt-0 mb-1 fs-13 fw-semibold">Angela Bernier</h6></Link>
-                                            <div className="fs-13 text-muted">
-                                                <p className="mb-1">Answered to your comment on the cash flow forecast's
-                                                    graph 🔔.</p>
-                                            </div>
-                                            <p className="mb-0 fs-11 fw-medium text-uppercase text-muted">
-                                                <span><i className="mdi mdi-clock-outline"></i> 2 hrs ago</span>
-                                            </p>
-                                        </div>
-                                        <div className="px-2 fs-15">
-                                        <div className="form-check notification-check">
-                                                    <input className="form-check-input" type="checkbox" value="" id="messages-notification-check02" />
-                                                    <label className="form-check-label" htmlFor="messages-notification-check02"></label>
-                                                </div>
-                                            {/* <input className="form-check-input" type="checkbox" /> */}
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="text-reset notification-item d-block dropdown-item">
-                                    <div className="d-flex">
-                                        <img src={avatar6}
-                                            className="me-3 rounded-circle avatar-xs" alt="user-pic" />
-                                        <div className="flex-1">
-                                            <Link to="#" className="stretched-link"><h6 className="mt-0 mb-1 fs-13 fw-semibold">Kenneth Brown</h6></Link>
-                                            <div className="fs-13 text-muted">
-                                                <p className="mb-1">Mentionned you in his comment on 📃 invoice #12501. </p>
-                                            </div>
-                                            <p className="mb-0 fs-11 fw-medium text-uppercase text-muted">
-                                                <span><i className="mdi mdi-clock-outline"></i> 10 hrs ago</span>
-                                            </p>
-                                        </div>
-                                        <div className="px-2 fs-15">
-                                        <div className="form-check notification-check">
-                                                    <input className="form-check-input" type="checkbox" value="" id="messages-notification-check03" />
-                                                    <label className="form-check-label" htmlFor="messages-notification-check03"></label>
-                                                </div>
-                                            {/* <input className="form-check-input" type="checkbox" /> */}
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="text-reset notification-item d-block dropdown-item">
-                                    <div className="d-flex">
-                                        <img src={avatar8}
-                                            className="me-3 rounded-circle avatar-xs" alt="user-pic" />
-                                        <div className="flex-1">
-                                            <Link to="#" className="stretched-link"><h6 className="mt-0 mb-1 fs-13 fw-semibold">Maureen Gibson</h6></Link>
-                                            <div className="fs-13 text-muted">
-                                                <p className="mb-1">We talked about a project on linkedin.</p>
-                                            </div>
-                                            <p className="mb-0 fs-11 fw-medium text-uppercase text-muted">
-                                                <span><i className="mdi mdi-clock-outline"></i> 3 days ago</span>
-                                            </p>
-                                        </div>
-                                        <div className="px-2 fs-15">
-                                        <div className="form-check notification-check">
-                                                    <input className="form-check-input" type="checkbox" value="" id="messages-notification-check04" />
-                                                    <label className="form-check-label" htmlFor="messages-notification-check04"></label>
-                                                </div>
-                                            {/* <input className="form-check-input" type="checkbox" /> */}
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="my-3 text-center">
-                                    <button type="button" className="btn btn-soft-success waves-effect waves-light">View
-                                        All Messages <i className="ri-arrow-right-line align-middle"></i></button>
-                                </div>
-                            </SimpleBar>
-                        </TabPane>
-                        <TabPane tabId="3" className="p-4">
-                            <div className="w-25 w-sm-50 pt-3 mx-auto">
-                                <img src={bell} className="img-fluid" alt="user-pic" />
-                            </div>
-                            <div className="text-center pb-5 mt-2">
-                                <h6 className="fs-18 fw-semibold lh-base">Hey! You have no any notifications </h6>
-                            </div>
-                        </TabPane>
-                    </TabContent>
+                        {/* </TabPane> */}
+                    {/* </TabContent> */}
                 </DropdownMenu>
             </Dropdown>
         </React.Fragment>
