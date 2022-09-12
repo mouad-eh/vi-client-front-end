@@ -8,11 +8,11 @@ const Footer = () => {
                 <Container fluid>
                     <Row>
                         <Col sm={6}>
-                            {new Date().getFullYear()} © Velzon.
-                        </Col>
+                            Copyright &copy; {new Date().getFullYear()} Sirius Net.
+                        </Col >
                         <Col sm={6}>
                             <div className="text-sm-end d-none d-sm-block">
-                                Design & Develop by Themesbrand
+                                Tous droits réservés.
                             </div>
                         </Col>
                     </Row>
