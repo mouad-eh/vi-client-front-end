@@ -219,192 +219,245 @@ import NFTLanding from "../pages/Landing/NFTLanding";
 // User Profile
 import UserProfile from "../pages/Authentication/user-profile";
 
+// const authProtectedRoutes = [
+//   { path: "/dashboard-analytics", component: DashboardAnalytics },
+//   { path: "/dashboard-crm", component: DashboardCrm },
+//   { path: "/dashboard", component: DashboardEcommerce },
+//   { path: "/index", component: DashboardEcommerce },
+//   { path: "/dashboard-crypto", component: DashboardCrypto },
+//   { path: "/dashboard-projects", component: DashboardProject },
+//   { path: "/dashboard-nft", component: DashboardNFT },
+//   { path: "/apps-calendar", component: Calendar },
+//   { path: "/apps-ecommerce-products", component: EcommerceProducts },
+//   { path: "/apps-ecommerce-product-details", component: EcommerceProductDetail },
+//   { path: "/apps-ecommerce-add-product", component: EcommerceAddProduct },
+//   { path: "/apps-ecommerce-orders", component: EcommerceOrders },
+//   { path: "/apps-ecommerce-order-details", component: EcommerceOrderDetail },
+//   { path: "/apps-ecommerce-customers", component: EcommerceCustomers },
+//   { path: "/apps-ecommerce-cart", component: EcommerceCart },
+//   { path: "/apps-ecommerce-checkout", component: EcommerceCheckout },
+//   { path: "/apps-ecommerce-sellers", component: EcommerceSellers },
+//   { path: "/apps-ecommerce-seller-details", component: EcommerceSellerDetail },
+
+//   //Chat
+//   { path: "/apps-chat", component: Chat },
+
+//   //EMail
+//   { path: "/apps-mailbox", component: MailInbox },
+//   { path: "/apps-email-basic", component: BasicAction },
+//   { path: "/apps-email-ecommerce", component: EcommerceAction },
+
+//   //Projects
+//   { path: "/apps-projects-list", component: ProjectList },
+//   { path: "/apps-projects-overview", component: ProjectOverview },
+//   { path: "/apps-projects-create", component: CreateProject },
+
+//   //Task
+//   { path: "/apps-tasks-list-view", component: TaskList },
+//   { path: "/apps-tasks-details", component: TaskDetails },
+//   { path: "/apps-tasks-kanban", component: KanbanBoard },
+//   //Crm
+//   { path: "/apps-crm-contacts", component: CrmContacts },
+//   { path: "/apps-crm-companies", component: CrmCompanies },
+//   { path: "/apps-crm-deals", component: CrmDeals },
+//   { path: "/apps-crm-leads", component: CrmLeads },
+
+//   //Invoices
+//   { path: "/apps-invoices-list", component: InvoiceList },
+//   { path: "/apps-invoices-details", component: InvoiceDetails },
+//   { path: "/apps-invoices-create", component: InvoiceCreate },
+
+//   //Supports Tickets
+//   { path: "/apps-tickets-list", component: ListView },
+//   { path: "/apps-tickets-details", component: TicketsDetails },
+
+//   //transactions
+//   { path: "/apps-crypto-transactions", component: Transactions },
+//   { path: "/apps-crypto-buy-sell", component: BuySell },
+//   { path: "/apps-crypto-orders", component: CryproOrder },
+//   { path: "/apps-crypto-wallet", component: MyWallet },
+//   { path: "/apps-crypto-ico", component: ICOList },
+//   { path: "/apps-crypto-kyc", component: KYCVerification },
+
+//   // NFT Marketplace
+//   { path: "/apps-nft-marketplace", component: Marketplace },
+//   { path: "/apps-nft-collections", component: Collections },
+//   { path: "/apps-nft-create", component: CreateNFT },
+//   { path: "/apps-nft-creators", component: Creators },
+//   { path: "/apps-nft-explore", component: ExploreNow },
+//   { path: "/apps-nft-item-details", component: ItemDetails },
+//   { path: "/apps-nft-auction", component: LiveAuction },
+//   { path: "/apps-nft-ranking", component: Ranking },
+//   { path: "/apps-nft-wallet", component: WalletConnect },
+
+//   //charts
+//   { path: "/charts-apex-line", component: LineCharts },
+//   { path: "/charts-apex-area", component: AreaCharts },
+//   { path: "/charts-apex-column", component: ColumnCharts },
+//   { path: "/charts-apex-bar", component: BarCharts },
+//   { path: "/charts-apex-mixed", component: MixedCharts },
+//   { path: "/charts-apex-timeline", component: TimelineCharts },
+//   { path: "/charts-apex-candlestick", component: CandlestickChart },
+//   { path: "/charts-apex-boxplot", component: BoxplotCharts },
+//   { path: "/charts-apex-bubble", component: BubbleChart },
+//   { path: "/charts-apex-scatter", component: ScatterCharts },
+//   { path: "/charts-apex-heatmap", component: HeatmapCharts },
+//   { path: "/charts-apex-treemap", component: TreemapCharts },
+//   { path: "/charts-apex-pie", component: PieCharts },
+//   { path: "/charts-apex-radialbar", component: RadialbarCharts },
+//   { path: "/charts-apex-radar", component: RadarCharts },
+//   { path: "/charts-apex-polar", component: PolarCharts },
+
+//   { path: "/charts-chartjs", component: ChartsJs },
+//   { path: "/charts-echarts", component: Echarts },
+
+
+//   // Base Ui
+//   { path: "/ui-alerts", component: UiAlerts },
+//   { path: "/ui-badges", component: UiBadges },
+//   { path: "/ui-buttons", component: UiButtons },
+//   { path: "/ui-colors", component: UiColors },
+//   { path: "/ui-cards", component: UiCards },
+//   { path: "/ui-carousel", component: UiCarousel },
+//   { path: "/ui-dropdowns", component: UiDropdowns },
+//   { path: "/ui-grid", component: UiGrid },
+//   { path: "/ui-images", component: UiImages },
+//   { path: "/ui-tabs", component: UiTabs },
+//   { path: "/ui-accordions", component: UiAccordions },
+//   { path: "/ui-modals", component: UiModals },
+//   { path: "/ui-offcanvas", component: UiOffcanvas },
+//   { path: "/ui-placeholders", component: UiPlaceholders },
+//   { path: "/ui-progress", component: UiProgress },
+//   { path: "/ui-notifications", component: UiNotifications },
+//   { path: "/ui-media", component: UiMediaobject },
+//   { path: "/ui-embed-video", component: UiEmbedVideo },
+//   { path: "/ui-typography", component: UiTypography },
+//   { path: "/ui-lists", component: UiList },
+//   { path: "/ui-general", component: UiGeneral },
+//   { path: "/ui-ribbons", component: UiRibbons },
+//   { path: "/ui-utilities", component: UiUtilities },
+
+//   // Advance Ui
+//   { path: "/advance-ui-nestable", component: UiNestableList },
+//   { path: "/advance-ui-scrollbar", component: UiScrollbar },
+//   { path: "/advance-ui-animation", component: UiAnimation },
+//   { path: "/advance-ui-tour", component: UiTour },
+//   { path: "/advance-ui-swiper", component: UiSwiperSlider },
+//   { path: "/advance-ui-ratings", component: UiRatings },
+//   { path: "/advance-ui-highlight", component: UiHighlight },
+
+//   // Widgets
+//   { path: "/widgets", component: Widgets },
+
+//   // Forms
+//   { path: "/forms-elements", component: BasicElements },
+//   { path: "/forms-select", component: FormSelect },
+//   { path: "/forms-editors", component: FormEditor },
+//   { path: "/forms-checkboxes-radios", component: CheckBoxAndRadio },
+//   { path: "/forms-masks", component: Masks },
+//   { path: "/forms-file-uploads", component: FileUpload },
+//   { path: "/forms-pickers", component: FormPickers },
+//   { path: "/forms-range-sliders", component: FormRangeSlider },
+//   { path: "/forms-layouts", component: Formlayouts },
+//   { path: "/forms-validation", component: FormValidation },
+//   { path: "/forms-wizard", component: FormWizard },
+//   { path: "/forms-advanced", component: FormAdvanced },
+//   { path: "/forms-select2", component: Select2 },
+
+//   //Tables
+//   { path: "/tables-basic", component: BasicTables },
+//   { path: "/tables-gridjs", component: GridTables },
+//   { path: "/tables-listjs", component: ListTables },
+//   { path: "/tables-datatables", component: DataTables },
+
+//   //Icons
+//   { path: "/icons-remix", component: RemixIcons },
+//   { path: "/icons-boxicons", component: BoxIcons },
+//   { path: "/icons-materialdesign", component: MaterialDesign },
+//   { path: "/icons-feather", component: FeatherIcons },
+//   { path: "/icons-lineawesome", component: LineAwesomeIcons },
+
+//   //Maps
+//   { path: "/maps-google", component: GoogleMaps },
+//   { path: "/maps-vector", component: VectorMaps },
+//   { path: "/maps-leaflet", component: LeafletMaps },
+
+//   //Pages
+//   { path: "/pages-starter", component: Starter },
+//   { path: "/pages-profile", component: SimplePage },
+//   { path: "/pages-profile-settings", component: Settings },
+//   { path: "/pages-team", component: Team },
+//   { path: "/pages-timeline", component: Timeline },
+//   { path: "/pages-faqs", component: Faqs },
+//   { path: "/pages-gallery", component: Gallery },
+//   { path: "/pages-pricing", component: Pricing },
+//   { path: "/pages-sitemap", component: SiteMap },
+//   { path: "/pages-search-results", component: SearchResults },
+
+//   //User Profile
+//   { path: "/profile", component: UserProfile },
+
+//   // this route should be at the end of all other routes
+//   // eslint-disable-next-line react/display-name
+//   {
+//     path: "/",
+//     exact: true,
+//     component: () => <Redirect to="/dashboard" />,
+//   },
+// ];
+
+const NullComponent = () => {
+  return <></>
+}
+
 const authProtectedRoutes = [
-  { path: "/dashboard-analytics", component: DashboardAnalytics },
-  { path: "/dashboard-crm", component: DashboardCrm },
-  { path: "/dashboard", component: DashboardEcommerce },
-  { path: "/index", component: DashboardEcommerce },
-  { path: "/dashboard-crypto", component: DashboardCrypto },
-  { path: "/dashboard-projects", component: DashboardProject },
-  { path: "/dashboard-nft", component: DashboardNFT },
-  { path: "/apps-calendar", component: Calendar },
-  { path: "/apps-ecommerce-products", component: EcommerceProducts },
-  { path: "/apps-ecommerce-product-details", component: EcommerceProductDetail },
-  { path: "/apps-ecommerce-add-product", component: EcommerceAddProduct },
-  { path: "/apps-ecommerce-orders", component: EcommerceOrders },
-  { path: "/apps-ecommerce-order-details", component: EcommerceOrderDetail },
-  { path: "/apps-ecommerce-customers", component: EcommerceCustomers },
-  { path: "/apps-ecommerce-cart", component: EcommerceCart },
-  { path: "/apps-ecommerce-checkout", component: EcommerceCheckout },
-  { path: "/apps-ecommerce-sellers", component: EcommerceSellers },
-  { path: "/apps-ecommerce-seller-details", component: EcommerceSellerDetail },
-
-  //Chat
-  { path: "/apps-chat", component: Chat },
-
-  //EMail
-  { path: "/apps-mailbox", component: MailInbox },
-  { path: "/apps-email-basic", component: BasicAction },
-  { path: "/apps-email-ecommerce", component: EcommerceAction },
-
-  //Projects
-  { path: "/apps-projects-list", component: ProjectList },
-  { path: "/apps-projects-overview", component: ProjectOverview },
-  { path: "/apps-projects-create", component: CreateProject },
-
-  //Task
-  { path: "/apps-tasks-list-view", component: TaskList },
-  { path: "/apps-tasks-details", component: TaskDetails },
-  { path: "/apps-tasks-kanban", component: KanbanBoard },
-  //Crm
-  { path: "/apps-crm-contacts", component: CrmContacts },
-  { path: "/apps-crm-companies", component: CrmCompanies },
-  { path: "/apps-crm-deals", component: CrmDeals },
-  { path: "/apps-crm-leads", component: CrmLeads },
-
-  //Invoices
-  { path: "/apps-invoices-list", component: InvoiceList },
-  { path: "/apps-invoices-details", component: InvoiceDetails },
-  { path: "/apps-invoices-create", component: InvoiceCreate },
-
-  //Supports Tickets
-  { path: "/apps-tickets-list", component: ListView },
-  { path: "/apps-tickets-details", component: TicketsDetails },
-
-  //transactions
-  { path: "/apps-crypto-transactions", component: Transactions },
-  { path: "/apps-crypto-buy-sell", component: BuySell },
-  { path: "/apps-crypto-orders", component: CryproOrder },
-  { path: "/apps-crypto-wallet", component: MyWallet },
-  { path: "/apps-crypto-ico", component: ICOList },
-  { path: "/apps-crypto-kyc", component: KYCVerification },
-
-  // NFT Marketplace
-  { path: "/apps-nft-marketplace", component: Marketplace },
-  { path: "/apps-nft-collections", component: Collections },
-  { path: "/apps-nft-create", component: CreateNFT },
-  { path: "/apps-nft-creators", component: Creators },
-  { path: "/apps-nft-explore", component: ExploreNow },
-  { path: "/apps-nft-item-details", component: ItemDetails },
-  { path: "/apps-nft-auction", component: LiveAuction },
-  { path: "/apps-nft-ranking", component: Ranking },
-  { path: "/apps-nft-wallet", component: WalletConnect },
-
-  //charts
-  { path: "/charts-apex-line", component: LineCharts },
-  { path: "/charts-apex-area", component: AreaCharts },
-  { path: "/charts-apex-column", component: ColumnCharts },
-  { path: "/charts-apex-bar", component: BarCharts },
-  { path: "/charts-apex-mixed", component: MixedCharts },
-  { path: "/charts-apex-timeline", component: TimelineCharts },
-  { path: "/charts-apex-candlestick", component: CandlestickChart },
-  { path: "/charts-apex-boxplot", component: BoxplotCharts },
-  { path: "/charts-apex-bubble", component: BubbleChart },
-  { path: "/charts-apex-scatter", component: ScatterCharts },
-  { path: "/charts-apex-heatmap", component: HeatmapCharts },
-  { path: "/charts-apex-treemap", component: TreemapCharts },
-  { path: "/charts-apex-pie", component: PieCharts },
-  { path: "/charts-apex-radialbar", component: RadialbarCharts },
-  { path: "/charts-apex-radar", component: RadarCharts },
-  { path: "/charts-apex-polar", component: PolarCharts },
-
-  { path: "/charts-chartjs", component: ChartsJs },
-  { path: "/charts-echarts", component: Echarts },
-
-
-  // Base Ui
-  { path: "/ui-alerts", component: UiAlerts },
-  { path: "/ui-badges", component: UiBadges },
-  { path: "/ui-buttons", component: UiButtons },
-  { path: "/ui-colors", component: UiColors },
-  { path: "/ui-cards", component: UiCards },
-  { path: "/ui-carousel", component: UiCarousel },
-  { path: "/ui-dropdowns", component: UiDropdowns },
-  { path: "/ui-grid", component: UiGrid },
-  { path: "/ui-images", component: UiImages },
-  { path: "/ui-tabs", component: UiTabs },
-  { path: "/ui-accordions", component: UiAccordions },
-  { path: "/ui-modals", component: UiModals },
-  { path: "/ui-offcanvas", component: UiOffcanvas },
-  { path: "/ui-placeholders", component: UiPlaceholders },
-  { path: "/ui-progress", component: UiProgress },
-  { path: "/ui-notifications", component: UiNotifications },
-  { path: "/ui-media", component: UiMediaobject },
-  { path: "/ui-embed-video", component: UiEmbedVideo },
-  { path: "/ui-typography", component: UiTypography },
-  { path: "/ui-lists", component: UiList },
-  { path: "/ui-general", component: UiGeneral },
-  { path: "/ui-ribbons", component: UiRibbons },
-  { path: "/ui-utilities", component: UiUtilities },
-
-  // Advance Ui
-  { path: "/advance-ui-nestable", component: UiNestableList },
-  { path: "/advance-ui-scrollbar", component: UiScrollbar },
-  { path: "/advance-ui-animation", component: UiAnimation },
-  { path: "/advance-ui-tour", component: UiTour },
-  { path: "/advance-ui-swiper", component: UiSwiperSlider },
-  { path: "/advance-ui-ratings", component: UiRatings },
-  { path: "/advance-ui-highlight", component: UiHighlight },
-
-  // Widgets
-  { path: "/widgets", component: Widgets },
-
-  // Forms
-  { path: "/forms-elements", component: BasicElements },
-  { path: "/forms-select", component: FormSelect },
-  { path: "/forms-editors", component: FormEditor },
-  { path: "/forms-checkboxes-radios", component: CheckBoxAndRadio },
-  { path: "/forms-masks", component: Masks },
-  { path: "/forms-file-uploads", component: FileUpload },
-  { path: "/forms-pickers", component: FormPickers },
-  { path: "/forms-range-sliders", component: FormRangeSlider },
-  { path: "/forms-layouts", component: Formlayouts },
-  { path: "/forms-validation", component: FormValidation },
-  { path: "/forms-wizard", component: FormWizard },
-  { path: "/forms-advanced", component: FormAdvanced },
-  { path: "/forms-select2", component: Select2 },
-
-  //Tables
-  { path: "/tables-basic", component: BasicTables },
-  { path: "/tables-gridjs", component: GridTables },
-  { path: "/tables-listjs", component: ListTables },
-  { path: "/tables-datatables", component: DataTables },
-
-  //Icons
-  { path: "/icons-remix", component: RemixIcons },
-  { path: "/icons-boxicons", component: BoxIcons },
-  { path: "/icons-materialdesign", component: MaterialDesign },
-  { path: "/icons-feather", component: FeatherIcons },
-  { path: "/icons-lineawesome", component: LineAwesomeIcons },
-
-  //Maps
-  { path: "/maps-google", component: GoogleMaps },
-  { path: "/maps-vector", component: VectorMaps },
-  { path: "/maps-leaflet", component: LeafletMaps },
-
-  //Pages
-  { path: "/pages-starter", component: Starter },
-  { path: "/pages-profile", component: SimplePage },
-  { path: "/pages-profile-settings", component: Settings },
-  { path: "/pages-team", component: Team },
-  { path: "/pages-timeline", component: Timeline },
-  { path: "/pages-faqs", component: Faqs },
-  { path: "/pages-gallery", component: Gallery },
-  { path: "/pages-pricing", component: Pricing },
-  { path: "/pages-sitemap", component: SiteMap },
-  { path: "/pages-search-results", component: SearchResults },
-
+  { path: "/nvl_cmnd", component: NullComponent },
+  { path: "/lst_cmnds", component: NullComponent },
+  { path: "/nvl_prdv", component: NullComponent },
+  { path: "/lst_prdv", component: NullComponent },
+  { path: "/gestion_depot", component: NullComponent },
+  { path: "/nvl_user_mob", component: NullComponent },
+  { path: "/lst_users_mob", component: NullComponent },
+  { path: "/nvl_grp_users_mob", component: NullComponent },
+  { path: "/lst_grp_users_mob", component: NullComponent },
+  { path: "/nvl_clnts", component: NullComponent },
+  { path: "/lst_clnt", component: NullComponent },
+  { path: "/map_clnts", component: NullComponent },
+  { path: "/nvl_concr", component: NullComponent },
+  { path: "/lst_concrs", component: NullComponent },
+  { path: "/map_concrs", component: NullComponent },
+  { path: "/nvl_prsp", component: NullComponent },
+  { path: "/lst_prsp", component: NullComponent },
+  { path: "/nvl_trne", component: NullComponent },
+  { path: "/lst_trne", component: NullComponent },
+  { path: "/nvl_pltqc", component: NullComponent },
+  { path: "/lst_pltqc", component: NullComponent },
+  { path: "/rpt_prodvnt", component: NullComponent },
+  { path: "/rpt_pclt", component: NullComponent },
+  { path: "/rpt_pvnd", component: NullComponent },
+  { path: "/rpt_grfq", component: NullComponent },
+  { path: "/rpt_cmptrd", component: NullComponent },
+  { path: "/rpt_recvrmt", component: NullComponent },
+  { path: "/nvl_encaiss_decaiss", component: NullComponent },
+  { path: "/lst_encaiss_decaiss", component: NullComponent },
+  { path: "/nvl_depens", component: NullComponent },
+  { path: "/lst_depens", component: NullComponent },
+  { path: "/nvl_zonv", component: NullComponent },
+  { path: "/lst_zonv", component: NullComponent },
+  { path: "/nvl_ctgc", component: NullComponent },
+  { path: "/lst_ctgc", component: NullComponent },
+  { path: "/nvl_pctgprdv", component: NullComponent },
+  { path: "/lst_pctgprdv", component: NullComponent },
+  { path: "/nvl_ctgprdv", component: NullComponent },
+  { path: "/lst_ctgprdv", component: NullComponent },
+  { path: "/nvl_user", component: NullComponent },
+  { path: "/lst_users", component: NullComponent },
+  { path: "/lst_companys", component: NullComponent },
+  { path: "/", component: NullComponent },
   //User Profile
   { path: "/profile", component: UserProfile },
-
-  // this route should be at the end of all other routes
-  // eslint-disable-next-line react/display-name
-  {
-    path: "/",
-    exact: true,
-    component: () => <Redirect to="/dashboard" />,
-  },
-];
+  { path: "/pages-profile-settings", component: Settings },
+]
 
 const publicRoutes = [
   // Authentication Page

@@ -10,6 +10,8 @@ import { withTranslation } from "react-i18next";
 const VerticalLayout = (props) => {
     const navData = navdata().props.children;
 
+
+    //this effect activate the menu item dropdown corresponding to the route
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
         const initMenu = () => {
@@ -82,10 +84,11 @@ const VerticalLayout = (props) => {
                 return (
                     <React.Fragment key={key}>
                         {/* Main Header */}
-                        {item['isHeader'] ?
+                        {item['isHeader'] ? // props.t has something to do with language translation
                             <li className="menu-title"><span data-key="t-menu">{props.t(item.label)} </span></li>
                             : (
-                                (item.subItems ? (
+                                // item level
+                                (item.subItems ? ( // item with subitems
                                     <li className="nav-item">
                                         <Link
                                             onClick={item.click}
@@ -99,7 +102,7 @@ const VerticalLayout = (props) => {
                                                 <span className={"badge badge-pill bg-" + item.badgeColor} data-key="t-new">{item.badgeName}</span>
                                                 : null}
                                         </Link>
-                                        <Collapse
+                                        <Collapse // for the sub items
                                             className="menu-dropdown"
                                             isOpen={item.stateVariables}
                                             id="sidebarApps">
@@ -107,7 +110,7 @@ const VerticalLayout = (props) => {
                                                 {/* subItms  */}
                                                 {item.subItems && ((item.subItems || []).map((subItem, key) => (
                                                     <React.Fragment key={key}>
-                                                        {!subItem.isChildItem ? (
+                                                        {!subItem.isChildItem ? ( // subitems without child items
                                                             <li className="nav-item">
                                                                 <Link
                                                                     to={subItem.link ? subItem.link : "/#"}
@@ -119,7 +122,7 @@ const VerticalLayout = (props) => {
                                                                         : null}
                                                                 </Link>
                                                             </li>
-                                                        ) : (
+                                                        ) : ( // subitems with child items
                                                             <li className="nav-item">
                                                                 <Link
                                                                     onClick={subItem.click}
@@ -134,7 +137,7 @@ const VerticalLayout = (props) => {
                                                                         {subItem.childItems && (
                                                                             (subItem.childItems || []).map((childItem, key) => (
                                                                                 <React.Fragment key={key}>
-                                                                                    {!childItem.childItems ?
+                                                                                    {!childItem.childItems ? //child item without childitems ( 3 levels )
                                                                                         <li className="nav-item">
                                                                                             <Link
                                                                                                 to={childItem.link ? childItem.link : "/#"}
@@ -142,6 +145,7 @@ const VerticalLayout = (props) => {
                                                                                                 {props.t(childItem.label)}
                                                                                             </Link>
                                                                                         </li>
+                                                                                        // child item with child items (4 levels)
                                                                                         : <li className="nav-item">
                                                                                             <Link to="/#" className="nav-link" onClick={childItem.click} data-bs-toggle="collapse">
                                                                                             {props.t(childItem.label)} <span className="badge badge-pill bg-danger" data-key="t-new">New</span>
@@ -171,7 +175,7 @@ const VerticalLayout = (props) => {
 
                                         </Collapse>
                                     </li>
-                                ) : (
+                                ) : ( // item without subitems
                                     <li className="nav-item">
                                         <Link
                                             className="nav-link menu-link"

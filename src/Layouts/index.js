@@ -54,7 +54,7 @@ const Layout = (props) => {
     /*
     layout settings
     */
-   // we will not need this
+   // when i commented this effect a lot of things were not working
     useEffect(() => {
         if (
             layoutType ||

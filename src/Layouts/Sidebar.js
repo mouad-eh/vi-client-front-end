@@ -5,6 +5,7 @@ import SimpleBar from "simplebar-react";
 import logoSm from "../assets/images/logo-sm.png";
 import logoDark from "../assets/images/logo-dark.png";
 import logoLight from "../assets/images/logo-light.png";
+import viLogo from "../assets/images/ic_logo.png"
 
 //Import Components
 import VerticalLayout from "./VerticalLayouts";
@@ -40,19 +41,19 @@ const Sidebar = ({ layoutType }) => {
         <div className="navbar-brand-box">
           <Link to="/" className="logo logo-dark">
             <span className="logo-sm">
-              <img src={logoSm} alt="" height="22" />
+              <img src={viLogo} alt="" height="30" />
             </span>
             <span className="logo-lg">
-              <img src={logoDark} alt="" height="17" />
+              <img src={viLogo} alt="" height="50" />
             </span>
           </Link>
 
           <Link to="/" className="logo logo-light">
             <span className="logo-sm">
-              <img src={logoSm} alt="" height="22" />
+              <img src={viLogo} alt="" height="30" />
             </span>
             <span className="logo-lg">
-              <img src={logoLight} alt="" height="17" />
+              <img src={viLogo} alt="" height="50" />
             </span>
           </Link>
           <button
