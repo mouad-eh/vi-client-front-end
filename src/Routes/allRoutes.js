@@ -4,7 +4,11 @@ import Login from "../pages/Authentication/Login";
 import Logout from "../pages/Authentication/Logout";
 import UserProfile from "../pages/Authentication/user-profile";
 import Settings from '../pages/Pages/Profile/Settings/Settings';
-
+import NouvelleCategorieClient from "../pages/NouvelleCategorieClient"
+import NouvelleCategorieParentProduit from "../pages/NouvelleCategorieParentProduit";
+import NouvelleCategorieProduit from "../pages/NouvelleCategorieProduit";
+import NouveauUtilisateur from "../pages/NouveauUtilisateur";
+import NouvelleZoneVente from "../pages/NouvelleZoneVente";
 const NullComponent = () => {
   return <></>
 }
@@ -41,15 +45,15 @@ const authProtectedRoutes = [
   { path: "/lst_encaiss_decaiss", component: NullComponent },
   { path: "/nvl_depens", component: NullComponent },
   { path: "/lst_depens", component: NullComponent },
-  { path: "/nvl_zonv", component: NullComponent },
+  { path: "/nvl_zonv", component: NouvelleZoneVente },
   { path: "/lst_zonv", component: NullComponent },
-  { path: "/nvl_ctgc", component: NullComponent },
+  { path: "/nvl_ctgc", component: NouvelleCategorieClient },
   { path: "/lst_ctgc", component: NullComponent },
-  { path: "/nvl_pctgprdv", component: NullComponent },
+  { path: "/nvl_pctgprdv", component: NouvelleCategorieParentProduit },
   { path: "/lst_pctgprdv", component: NullComponent },
-  { path: "/nvl_ctgprdv", component: NullComponent },
+  { path: "/nvl_ctgprdv", component: NouvelleCategorieProduit },
   { path: "/lst_ctgprdv", component: NullComponent },
-  { path: "/nvl_user", component: NullComponent },
+  { path: "/nvl_user", component: NouveauUtilisateur},
   { path: "/lst_users", component: NullComponent },
   { path: "/lst_companys", component: NullComponent },
   { path: "/", component: NullComponent },
