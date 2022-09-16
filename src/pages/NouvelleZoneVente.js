@@ -10,8 +10,20 @@ const etendueOptions = [
     { value: 'wilaya', label: 'Wilaya(s)' },
     { value: 'commune', label: 'Commune(s)' },
 ];
+const wilayaOptions = [
+    { value: 1, label: 'Adrar' },
+    { value: 2, label: 'Chlef' },
+];
 
+const communeOptions = [
+    { value: 1, label: 'Chettia' },
+    { value: 2, label: 'Boukadir' },
+];
 
+const typeOptions = [
+    { value: 'cercle', label: 'Cercle' },
+    { value: 'polygone', label: 'Polygone' },
+]
 const NouvelleZoneVente = () => {
     const [activeTab, setactiveTab] = useState("1");
     const toggle = (tab) => {
@@ -25,21 +37,33 @@ const NouvelleZoneVente = () => {
     //     setSelectedSingle(selectedSingle);
     // }
 
+    // const [etendue, setEtendue] = useState({})
+    // const handleEtendueSelect = (value) => {
+    //     setEtendue(value);
+    //     console.log(value);
+    // }
     const formik = useFormik({
         initialValues: {
             code: "",
             designation: "",
-            etendue: "",
+            etendue: { value: "", label: "" },
+            wilaya: { value: "", label: "" },
+            commune: { value: "", label: "" },
+            type: { value: "", label: "" },
             observation: ""
         },
         validationSchema: Yup.object({
             code: Yup.mixed(),
-            designation: Yup.mixed(),
             etendue: Yup.mixed(),
+            wilaya: Yup.mixed(),
+            commune: Yup.mixed(),
+            designation: Yup.mixed(),
+            designation: Yup.mixed(),
             observation: Yup.mixed()
         }),
         onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
+            // alert(JSON.stringify(values, null, 2));
+            console.log(JSON.stringify(values, null, 2))
         },
     })
     return (
@@ -90,14 +114,125 @@ const NouvelleZoneVente = () => {
                                                 <Select
                                                     id="etendue"
                                                     name="etendue"
+                                                    // value={etendue}
                                                     value={formik.values.etendue}
-                                                    onChange={value => formik.setFieldValue("etendue", value)}
-                                                    // onBlur={()=> formik.setFieldTouched("etendue",true)}
-                                                    // // touched={formik.touched.etendue}
+                                                    // onChange={value => formik.setFieldValue("etendue", value)}
+                                                    // onChange={handleEtendueSelect}
+                                                    onChange={selectedOption => {
+                                                        formik.setFieldValue("etendue", selectedOption);
+                                                        console.log(formik.values.etendue);
+                                                    }}
                                                     options={etendueOptions}
                                                 />
                                             </Col>
                                         </Row>
+                                        {formik.values.etendue.value ?
+                                            (
+                                                formik.values.etendue.value === "wilaya" ?
+                                                    (
+                                                        <Row className="mb-3">
+                                                            <Col lg={3} >
+                                                                <Label htmlFor="wilaya" className="form-label text-muted">Wilaya(s)</Label>
+                                                            </Col>
+                                                            <Col lg={4} md={6} >
+                                                                <Select
+                                                                    id="wilaya"
+                                                                    name="wilaya"
+                                                                    value={formik.values.wilaya}
+                                                                    onChange={selectedOption => {
+                                                                        formik.setFieldValue("wilaya", selectedOption);
+                                                                    }}
+                                                                    options={wilayaOptions}
+                                                                />
+                                                            </Col>
+                                                        </Row>
+                                                    )
+                                                    :
+                                                    (
+                                                        <Row className="mb-3">
+                                                            <Col lg={3} >
+                                                                <Label htmlFor="commune" className="form-label text-muted">Communes(s)</Label>
+                                                            </Col>
+                                                            <Col lg={4} md={6} >
+                                                                <Select // this one is a 2 level list
+                                                                    id="commune"
+                                                                    name="commune"
+                                                                    value={formik.values.commune}
+                                                                    onChange={selectedOption => {
+                                                                        formik.setFieldValue("commune", selectedOption);
+                                                                    }}
+                                                                    options={communeOptions}
+                                                                />
+                                                            </Col>
+                                                        </Row>
+                                                    )
+                                            )
+                                            : null
+                                        }
+                                        <Row className="mb-3">
+                                            <Col lg={3} >
+                                                <Label htmlFor="type" className="form-label text-muted">Type</Label>
+                                            </Col>
+                                            <Col lg={4} md={6} >
+                                                <Select
+                                                    id="type"
+                                                    name="type"
+                                                    value={formik.values.type}
+                                                    onChange={selectedOption => {
+                                                        formik.setFieldValue("type", selectedOption);
+                                                    }}
+                                                    options={typeOptions}
+                                                />
+                                            </Col>
+                                        </Row>
+                                        {formik.values.type.value ?
+                                            (
+                                                formik.values.type.value === "cercle" ?
+                                                    (
+                                                        <>
+                                                            <Row className="mb-3">
+                                                                <Col lg={3} >
+                                                                    <Label htmlFor="code" className="form-label">X</Label>                                        </Col>
+                                                                <Col lg={9} >
+                                                                    <Input type="text" className="form-control" id="code"
+                                                                        {...formik.getFieldProps("code")}
+                                                                    />
+                                                                </Col>
+                                                            </Row>
+                                                            <Row className="mb-3">
+                                                                <Col lg={3} >
+                                                                    <Label htmlFor="code" className="form-label">Y</Label>                                        </Col>
+                                                                <Col lg={9} >
+                                                                    <Input type="text" className="form-control" id="code"
+                                                                        {...formik.getFieldProps("code")}
+                                                                    />
+                                                                </Col>
+                                                            </Row>
+                                                            <Row className="mb-3">
+                                                                <Col lg={3} >
+                                                                    <Label htmlFor="code" className="form-label">Rayon (km)</Label>                                        </Col>
+                                                                <Col lg={9} >
+                                                                    <Input type="text" className="form-control" id="code"
+                                                                        {...formik.getFieldProps("code")}
+                                                                    />
+                                                                </Col>
+                                                            </Row>
+                                                        </>
+                                                    )
+                                                    :
+                                                    (
+                                                        <Row className="mb-3">
+                                                            <Col lg={3} >
+                                                                <Label htmlFor="observation" className="form-label">Lignes</Label>
+                                                            </Col>
+                                                            <Col lg={9} >
+                                                                <textarea className="form-control" id="Observation" rows="5" {...formik.getFieldProps('observation')}></textarea>
+                                                            </Col>
+                                                        </Row>
+                                                    )
+                                            )
+                                            : null
+                                        }
                                         <Row className="mb-3">
                                             <Col lg={3} >
                                                 <Label htmlFor="observation" className="form-label">Observation</Label>
