@@ -1,10 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import BreadCrumb from "../Components/Common/BreadCrumb";
 import { Container, Col, Row, Card, CardBody, Label, Input, Form, Nav, NavItem, NavLink, TabContent, TabPane } from "reactstrap"
 import { useFormik } from "formik";
 import Select from "react-select";
 import * as Yup from "yup";
 import classnames from "classnames";
+import { CustomInput } from "../Components/CustomInput"
+import { CustomSelect } from "../Components/CustomSelect"
+import { CustomTextArea } from "../Components/CustomTextArea"
+
+import { MapContainer, TileLayer, FeatureGroup } from "react-leaflet";
+import { EditControl } from "react-leaflet-draw";
+import "leaflet/dist/leaflet.css";
+import "leaflet-draw/dist/leaflet.draw.css";
 
 const etendueOptions = [
     { value: 'wilaya', label: 'Wilaya(s)' },
@@ -32,6 +40,12 @@ const NouvelleZoneVente = () => {
         }
     };
 
+    const [center, setCenter] = useState({ lat: 24.4539, lng: 54.3773 });
+    const ZOOM_LEVEL = 12;
+    const mapRef = useRef();
+    const _created = (e)=>{
+        console.log(e);
+    }
     // const [selectedSingle, setSelectedSingle] = useState(null);
     // function handleSelectSingle(selectedSingle) {
     //     setSelectedSingle(selectedSingle);
@@ -88,159 +102,57 @@ const NouvelleZoneVente = () => {
                                 </Nav>
                                 <TabContent activeTab={activeTab} className="text-muted">
                                     <TabPane tabId="1" id="infos">
-                                        <Row className="mb-3">
-                                            <Col lg={3} >
-                                                <Label htmlFor="code" className="form-label">Code</Label>                                        </Col>
-                                            <Col lg={9} >
-                                                <Input type="text" className="form-control" id="code"
-                                                    {...formik.getFieldProps("code")}
-                                                />
-                                            </Col>
-                                        </Row>
-                                        <Row className="mb-3">
-                                            <Col lg={3} >
-                                                <Label htmlFor="designation" className="form-label">Désignation</Label>                                        </Col>
-                                            <Col lg={9} >
-                                                <Input type="text" className="form-control" id="designation"
-                                                    {...formik.getFieldProps("designation")}
-                                                />
-                                            </Col>
-                                        </Row>
-                                        <Row className="mb-3">
-                                            <Col lg={3} >
-                                                <Label htmlFor="etendue" className="form-label text-muted">Etendue</Label>
-                                            </Col>
-                                            <Col lg={4} md={6} >
-                                                <Select
-                                                    id="etendue"
-                                                    name="etendue"
-                                                    // value={etendue}
-                                                    value={formik.values.etendue}
-                                                    // onChange={value => formik.setFieldValue("etendue", value)}
-                                                    // onChange={handleEtendueSelect}
-                                                    onChange={selectedOption => {
-                                                        formik.setFieldValue("etendue", selectedOption);
-                                                        console.log(formik.values.etendue);
-                                                    }}
-                                                    options={etendueOptions}
-                                                />
-                                            </Col>
-                                        </Row>
+                                        <CustomInput type="text" label="Code" formik={formik} />
+                                        <CustomInput type="text" label="Désignation" formik={formik} />
+                                        <CustomSelect label="Etendue" formik={formik} options={etendueOptions} />
                                         {formik.values.etendue.value ?
                                             (
                                                 formik.values.etendue.value === "wilaya" ?
-                                                    (
-                                                        <Row className="mb-3">
-                                                            <Col lg={3} >
-                                                                <Label htmlFor="wilaya" className="form-label text-muted">Wilaya(s)</Label>
-                                                            </Col>
-                                                            <Col lg={4} md={6} >
-                                                                <Select
-                                                                    id="wilaya"
-                                                                    name="wilaya"
-                                                                    value={formik.values.wilaya}
-                                                                    onChange={selectedOption => {
-                                                                        formik.setFieldValue("wilaya", selectedOption);
-                                                                    }}
-                                                                    options={wilayaOptions}
-                                                                />
-                                                            </Col>
-                                                        </Row>
-                                                    )
-                                                    :
-                                                    (
-                                                        <Row className="mb-3">
-                                                            <Col lg={3} >
-                                                                <Label htmlFor="commune" className="form-label text-muted">Communes(s)</Label>
-                                                            </Col>
-                                                            <Col lg={4} md={6} >
-                                                                <Select // this one is a 2 level list
-                                                                    id="commune"
-                                                                    name="commune"
-                                                                    value={formik.values.commune}
-                                                                    onChange={selectedOption => {
-                                                                        formik.setFieldValue("commune", selectedOption);
-                                                                    }}
-                                                                    options={communeOptions}
-                                                                />
-                                                            </Col>
-                                                        </Row>
-                                                    )
+                                                    <CustomSelect label="Wilaya(s)" formik={formik} options={wilayaOptions} isMulti={true} />
+                                                    : <CustomSelect label="Commune(s)" formik={formik} options={communeOptions} isMulti={true} />
                                             )
                                             : null
                                         }
-                                        <Row className="mb-3">
-                                            <Col lg={3} >
-                                                <Label htmlFor="type" className="form-label text-muted">Type</Label>
-                                            </Col>
-                                            <Col lg={4} md={6} >
-                                                <Select
-                                                    id="type"
-                                                    name="type"
-                                                    value={formik.values.type}
-                                                    onChange={selectedOption => {
-                                                        formik.setFieldValue("type", selectedOption);
-                                                    }}
-                                                    options={typeOptions}
-                                                />
-                                            </Col>
-                                        </Row>
+                                        <CustomSelect label="Type" formik={formik} options={typeOptions} />
                                         {formik.values.type.value ?
                                             (
                                                 formik.values.type.value === "cercle" ?
                                                     (
-                                                        <>
-                                                            <Row className="mb-3">
-                                                                <Col lg={3} >
-                                                                    <Label htmlFor="code" className="form-label">X</Label>                                        </Col>
-                                                                <Col lg={9} >
-                                                                    <Input type="text" className="form-control" id="code"
-                                                                        {...formik.getFieldProps("code")}
-                                                                    />
-                                                                </Col>
-                                                            </Row>
-                                                            <Row className="mb-3">
-                                                                <Col lg={3} >
-                                                                    <Label htmlFor="code" className="form-label">Y</Label>                                        </Col>
-                                                                <Col lg={9} >
-                                                                    <Input type="text" className="form-control" id="code"
-                                                                        {...formik.getFieldProps("code")}
-                                                                    />
-                                                                </Col>
-                                                            </Row>
-                                                            <Row className="mb-3">
-                                                                <Col lg={3} >
-                                                                    <Label htmlFor="code" className="form-label">Rayon (km)</Label>                                        </Col>
-                                                                <Col lg={9} >
-                                                                    <Input type="text" className="form-control" id="code"
-                                                                        {...formik.getFieldProps("code")}
-                                                                    />
-                                                                </Col>
-                                                            </Row>
-                                                        </>
+                                                        <React.Fragment>
+                                                            <CustomInput type="text" label="X" formik={formik} isNarrow={true} />
+                                                            <CustomInput type="text" label="Y" formik={formik} isNarrow={true} />
+                                                            <CustomInput type="text" label="Rayon (km)" formik={formik} isNarrow={true} />
+                                                        </React.Fragment>
                                                     )
                                                     :
                                                     (
-                                                        <Row className="mb-3">
-                                                            <Col lg={3} >
-                                                                <Label htmlFor="observation" className="form-label">Lignes</Label>
-                                                            </Col>
-                                                            <Col lg={9} >
-                                                                <textarea className="form-control" id="Observation" rows="5" {...formik.getFieldProps('observation')}></textarea>
-                                                            </Col>
-                                                        </Row>
+                                                        <CustomTextArea label="Lines" formik={formik} isNarrow={true} />
                                                     )
                                             )
                                             : null
                                         }
-                                        <Row className="mb-3">
-                                            <Col lg={3} >
-                                                <Label htmlFor="observation" className="form-label">Observation</Label>
-                                            </Col>
-                                            <Col lg={9} >
-                                                <textarea className="form-control" id="Observation" rows="5" {...formik.getFieldProps('observation')}></textarea>
-                                            </Col>
-                                        </Row>
+                                        <MapContainer center={center} zoom={ZOOM_LEVEL} ref={mapRef}>
+                                            <FeatureGroup>
+                                                <EditControl
+                                                    position="topright"
+                                                    onCreated={_created}
+                                                    draw={
+                                                        {
+                                                            rectangle: false,
+                                                            circle: false,
+                                                            circlemarker: false,
+                                                            marker: false,
+                                                            polyline: false,
+                                                        }
+                                                    }
+                                                />
+                                            </FeatureGroup>
+                                            <TileLayer
+                                                url='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                                attribution="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                            />
+                                        </MapContainer>
+                                        <CustomTextArea label="Observation" formik={formik} />
                                     </TabPane>
                                     <TabPane tabId="2" id="client">
                                     </TabPane>

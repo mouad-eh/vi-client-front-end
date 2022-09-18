@@ -2,7 +2,9 @@ import React from "react";
 import BreadCrumb from "../Components/Common/BreadCrumb";
 import { Container, Col, Row, Card, CardBody, Label, Input, Form, FormFeedback } from "reactstrap"
 import { useFormik } from "formik";
-import * as Yup from "yup"
+import * as Yup from "yup";
+import { CustomInput } from "../Components/CustomInput";
+import { CustomTextArea } from "../Components/CustomTextArea";
 
 const NouvelleCategorieParentProduit = () => {
     // const SUPPORTED_FORMATS = [
@@ -41,45 +43,10 @@ const NouvelleCategorieParentProduit = () => {
                     <Card>
                         <CardBody className="card-body">
                             <Form className="needs-validation" onSubmit={formik.onSubmit} noValidate>
-                                <Row className="mb-3">
-                                    <Col lg={3} >
-                                        <Label htmlFor="designation" className="form-label">Désignation</Label>                                        </Col>
-                                    <Col lg={9} >
-                                        <Input type="text" className="form-control" id="designation"
-                                            {...formik.getFieldProps('designation')}
-                                            invalid={formik.touched.designation && formik.errors.designation ? (true) : false}
-                                        />
-                                    </Col>
-                                </Row>
-                                <Row className="mb-3">
-                                    <Col lg={3} >
-                                        <Label htmlFor="designationEnArabe" className="form-label">Désignation &#40;En Arabe&#41;</Label>
-                                    </Col>
-                                    <Col lg={9} >
-                                        <Input type="text" className="form-control" dir="rtl" id="designationEnArabe"
-                                            {...formik.getFieldProps('designationEnArabe')} />
-                                    </Col>
-                                </Row>
-                                <Row className="mb-3">
-                                    <Col lg={3} >
-                                        <Label htmlFor="observation" className="form-label">Observation</Label>
-                                    </Col>
-                                    <Col lg={9} >
-                                        <textarea className="form-control" id="Observation" rows="5"
-                                            {...formik.getFieldProps('observation')}>
-                                        </textarea>
-                                    </Col>
-                                </Row>
-                                <Row className="mb-3">
-                                    <Col lg={3} >
-                                        <Label htmlFor="image" className="form-label">Image</Label>
-                                    </Col>
-                                    <Col lg={9} >
-                                        <Input type="file" className="form-control" id="image"
-                                            {...formik.getFieldProps("image")}
-                                        />
-                                    </Col>
-                                </Row>
+                                <CustomInput type="text" label="Désignation" formik={formik} />
+                                <CustomInput type="text" label="Désignation (en arabe)" formik={formik} isRtl={true} />
+                                <CustomTextArea label="Observation" formik={formik} />
+                                <CustomInput type="file" label="image" formik={formik}/>
                                 <div className="text-end">
                                     <button type="submit" className="btn btn-primary g-auto">Enregistrer</button>
                                 </div>
