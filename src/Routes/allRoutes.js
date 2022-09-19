@@ -9,6 +9,8 @@ import NouvelleCategorieParentProduit from "../pages/NouvelleCategorieParentProd
 import NouvelleCategorieProduit from "../pages/NouvelleCategorieProduit";
 import NouveauUtilisateur from "../pages/NouveauUtilisateur";
 import NouvelleZoneVente from "../pages/NouvelleZoneVente";
+import NouveauProduitVente from "../pages/NouveauProduitVente";
+import NouveauAgentItinerant from "../pages/NouveauAgentItinerant";
 const NullComponent = () => {
   return <></>
 }
@@ -16,10 +18,10 @@ const NullComponent = () => {
 const authProtectedRoutes = [
   { path: "/nvl_cmnd", component: NullComponent },
   { path: "/lst_cmnds", component: NullComponent },
-  { path: "/nvl_prdv", component: NullComponent },
+  { path: "/nvl_prdv", component: NouveauProduitVente },
   { path: "/lst_prdv", component: NullComponent },
   { path: "/gestion_depot", component: NullComponent },
-  { path: "/nvl_user_mob", component: NullComponent },
+  { path: "/nvl_user_mob", component: NouveauAgentItinerant },
   { path: "/lst_users_mob", component: NullComponent },
   { path: "/nvl_grp_users_mob", component: NullComponent },
   { path: "/lst_grp_users_mob", component: NullComponent },
