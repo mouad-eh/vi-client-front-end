@@ -28,6 +28,12 @@ const typeOptions = [
     { value: 'cercle', label: 'Cercle' },
     { value: 'polygone', label: 'Polygone' },
 ]
+const tableHeaders = ["Client", "du", "à"]
+const tableData = [
+    ["Mary Cousar", "06 Apr,2021", "06 Apr,2021"],
+    ["Jeff Taylor", "15 Feb,2021", "15 Feb,2021"]
+]
+
 const NouvelleZoneVente = () => {
     const [activeTab, setactiveTab] = useState("1");
     const toggle = (tab) => {
@@ -112,7 +118,7 @@ const NouvelleZoneVente = () => {
                                         <CustomTextArea label="Observation" formik={formik} />
                                     </TabPane>
                                     <TabPane tabId="2" id="client">
-                                        <AddRemoveEditList />
+                                        <AddRemoveEditList tableHeaders={tableHeaders} tableData={tableData}/>
                                     </TabPane>
                                 </TabContent>
                             </CardBody>

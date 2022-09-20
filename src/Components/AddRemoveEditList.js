@@ -3,7 +3,9 @@ import { Button, Modal, ModalBody, ModalFooter, ModalHeader, Row } from 'reactst
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 
-export const AddRemoveEditList = () => {
+
+
+export const AddRemoveEditList = ({ tableHeaders, tableData }) => {
     const [modal_list, setmodal_list] = useState(false);
     const tog_list = () => {
         setmodal_list(!modal_list);
@@ -17,34 +19,44 @@ export const AddRemoveEditList = () => {
     return (
         <React.Fragment>
             <div id="customerList">
-                <div className="table-responsive table-card mt-3 mb-1">
+                <div className="table-responsive table-card mt-3 mb-1 mx-1">
                     <table className="table align-middle table-wrap" id="customerTable">
                         <thead className="table-light">
                             <tr>
-                                <th>Client</th>
-                                <th>du</th>
-                                <th>à</th>
+                                {tableHeaders.map(
+                                    (header, index) => <th key={index}>{header}</th>
+                                )}
                             </tr>
                         </thead>
                         <tbody className="list form-check-all">
-                            <tr>
-                                <td className="id" style={{ display: "none" }}><Link to="#" className="fw-medium link-primary">#VZ2101</Link></td>
-                                <td className="customer_name">Mary Cousar</td>
-                                <td className="date-du">06 Apr, 2021</td>
-                                <td className="date-a">06 Apr, 2021</td>
-                                <td>
-                                    <div className="d-flex gap-2">
-                                        <div className="edit">
-                                            <button className="btn btn-sm btn-success edit-item-btn"
-                                                data-bs-toggle="modal" data-bs-target="#showModal">Modifier</button>
-                                        </div>
-                                        <div className="remove">
-                                            <button className="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Supprimer</button>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
+                            {
+                                tableData.map(
+                                    (row, index) => {
+                                        return (
+                                            <tr key={index} >
+                                                {
+                                                    row.map(
+                                                        (data, index) => <td key={index}>{data}</td>
+                                                    )
+                                                }
+                                                <td>
+                                                    <div className="d-flex gap-2">
+                                                        <div className="edit">
+                                                            <button className="btn btn-sm btn-success edit-item-btn"
+                                                                data-bs-toggle="modal" data-bs-target="#showModal">Modifier</button>
+                                                        </div>
+                                                        <div className="remove">
+                                                            <button className="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Supprimer</button>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        );
+                                    }
+                                )
+                            }
+
+                            {/* <tr>
                                 <td className="id" style={{ display: "none" }}><Link to="#" className="fw-medium link-primary">#VZ2102</Link></td>
                                 <td className="customer_name">Jeff Taylor</td>
                                 <td className="date_du">15 Feb, 2021</td>
@@ -60,7 +72,7 @@ export const AddRemoveEditList = () => {
                                         </div>
                                     </div>
                                 </td>
-                            </tr>
+                            </tr> */}
                         </tbody>
                     </table>
                 </div>
@@ -71,18 +83,29 @@ export const AddRemoveEditList = () => {
             {/* Add Modal */}
             <Modal isOpen={modal_list} toggle={() => { tog_list(); }} centered >
                 <ModalHeader className="bg-light p-3">
-                    Ajouter Client
+                    {"Ajouter " + tableHeaders[0]}
                     <Button type="button" onClick={() => { setmodal_list(false); }} className="btn-close" aria-label="Close" >
                     </Button>
                 </ModalHeader>
                 <form>
                     <ModalBody>
-                        <div className="mb-3" id="modal-id" style={{ display: "none" }}>
+                        {/* <div className="mb-3" id="modal-id" style={{ display: "none" }}>
                             <label htmlFor="id-field" className="form-label">ID</label>
                             <input type="text" id="id-field" className="form-control" placeholder="ID" readOnly />
-                        </div>
-
-                        <div className="mb-3">
+                        </div> */}
+                        {
+                            tableHeaders.map(
+                                (item, index) => {
+                                    return (
+                                        <div key={index} className="mb-3">
+                                            <label htmlFor={item} className="form-label">{item}</label>
+                                            <input type="text" id={item} className="form-control" required />
+                                        </div>
+                                    );
+                                }
+                            )
+                        }
+                        {/* <div className="mb-3">
                             <label htmlFor="customername-field" className="form-label">Client</label>
                             <input type="text" id="customername-field" className="form-control" required />
                         </div>
@@ -95,32 +118,12 @@ export const AddRemoveEditList = () => {
                         <div className="mb-3">
                             <label htmlFor="phone-field" className="form-label">à</label>
                             <input type="text" id="phone-field" className="form-control" required />
-                        </div>
-
-                        {/* <div className="mb-3">
-                            <label htmlFor="date-field" className="form-label">Joining Date</label>
-                            <Flatpickr
-                                className="form-control"
-                                options={{
-                                    dateFormat: "d M, Y"
-                                }}
-                                placeholder="Select Date"
-                            />
-                        </div>
-
-                        <div>
-                            <label htmlFor="status-field" className="form-label">Status</label>
-                            <select className="form-control" data-trigger name="status-field" id="status-field" >
-                                <option value="">Status</option>
-                                <option value="Active">Active</option>
-                                <option value="Block">Block</option>
-                            </select>
                         </div> */}
                     </ModalBody>
                     <ModalFooter>
                         <div className="hstack gap-2 justify-content-end">
                             <button type="button" className="btn btn-light" onClick={() => setmodal_list(false)}>Fermer</button>
-                            <button type="submit" className="btn btn-success" id="add-btn">Ajouter Client</button>
+                            <button type="submit" className="btn btn-success" id="add-btn">Ajouter</button>
                             <button type="button" className="btn btn-success" id="edit-btn">Modifier</button>
                         </div>
                     </ModalFooter>

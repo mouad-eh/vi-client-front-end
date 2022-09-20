@@ -11,6 +11,8 @@ import NouveauUtilisateur from "../pages/NouveauUtilisateur";
 import NouvelleZoneVente from "../pages/NouvelleZoneVente";
 import NouveauProduitVente from "../pages/NouveauProduitVente";
 import NouveauAgentItinerant from "../pages/NouveauAgentItinerant";
+import NouveauGroupeAgentItinerant from "../pages/NouveauGroupeAgentItinerant";
+import NouveauClient from "../pages/NouveauClient";
 const NullComponent = () => {
   return <></>
 }
@@ -23,9 +25,9 @@ const authProtectedRoutes = [
   { path: "/gestion_depot", component: NullComponent },
   { path: "/nvl_user_mob", component: NouveauAgentItinerant },
   { path: "/lst_users_mob", component: NullComponent },
-  { path: "/nvl_grp_users_mob", component: NullComponent },
+  { path: "/nvl_grp_users_mob", component: NouveauGroupeAgentItinerant },
   { path: "/lst_grp_users_mob", component: NullComponent },
-  { path: "/nvl_clnts", component: NullComponent },
+  { path: "/nvl_clnts", component: NouveauClient },
   { path: "/lst_clnt", component: NullComponent },
   { path: "/map_clnts", component: NullComponent },
   { path: "/nvl_concr", component: NullComponent },
