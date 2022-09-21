@@ -13,6 +13,10 @@ import NouveauProduitVente from "../pages/NouveauProduitVente";
 import NouveauAgentItinerant from "../pages/NouveauAgentItinerant";
 import NouveauGroupeAgentItinerant from "../pages/NouveauGroupeAgentItinerant";
 import NouveauClient from "../pages/NouveauClient";
+import NouveauConcurrent from "../pages/NouveauConcurrent";
+import NouveauProspect from "../pages/NouveauProspect";
+import NouvelleTournee from "../pages/NouvelleTournee";
+import NouvelObjectif from "../pages/NouvelObjectif";
 const NullComponent = () => {
   return <></>
 }
@@ -30,14 +34,14 @@ const authProtectedRoutes = [
   { path: "/nvl_clnts", component: NouveauClient },
   { path: "/lst_clnt", component: NullComponent },
   { path: "/map_clnts", component: NullComponent },
-  { path: "/nvl_concr", component: NullComponent },
+  { path: "/nvl_concr", component: NouveauConcurrent },
   { path: "/lst_concrs", component: NullComponent },
   { path: "/map_concrs", component: NullComponent },
-  { path: "/nvl_prsp", component: NullComponent },
+  { path: "/nvl_prsp", component: NouveauProspect },
   { path: "/lst_prsp", component: NullComponent },
-  { path: "/nvl_trne", component: NullComponent },
+  { path: "/nvl_trne", component: NouvelleTournee },
   { path: "/lst_trne", component: NullComponent },
-  { path: "/nvl_pltqc", component: NullComponent },
+  { path: "/nvl_pltqc", component: NouvelObjectif },
   { path: "/lst_pltqc", component: NullComponent },
   { path: "/rpt_prodvnt", component: NullComponent },
   { path: "/rpt_pclt", component: NullComponent },
