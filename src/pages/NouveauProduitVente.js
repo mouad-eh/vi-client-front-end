@@ -1,29 +1,29 @@
 import React from "react";
-import BreadCrumb from "../Components/Common/BreadCrumb";
-import { Container, Card, CardBody, Form, Row } from "reactstrap"
+import { Card, CardBody, Form, Row } from "reactstrap"
 import { useFormik } from "formik";
 import * as Yup from "yup"
 import { CustomInput } from "../Components/CustomInput";
 import { CustomTextArea } from "../Components/CustomTextArea";
 import { CustomSelect } from "../Components/CustomSelect";
 import { CustomCheckBox } from "../Components/CustomCheckBox";
+import MainContentLayout from "../Components/MainContentLayout";
 
-const typeOptions = [
-    { value: "En arrivage", label: "En arrivage" },
-    { value: "Fin de vie", label: "fin de vie" }
-]
-
-const categorieOptions = [
-    { value: "Categorie1", label: "Categorie1" },
-    { value: "Categorie2", label: "Categorie2" }
-]
-
-const unitOptions = [
-    { value: "unité1", label: "unité1" },
-    { value: "unité2", label: "unité2" }
-]
 
 const NouveauProduitVente = () => {
+    const typeOptions = [
+        { value: "En arrivage", label: "En arrivage" },
+        { value: "Fin de vie", label: "fin de vie" }
+    ]
+
+    const categorieOptions = [
+        { value: "Categorie1", label: "Categorie1" },
+        { value: "Categorie2", label: "Categorie2" }
+    ]
+
+    const unitOptions = [
+        { value: "unité1", label: "unité1" },
+        { value: "unité2", label: "unité2" }
+    ]
     const formik = useFormik({
         initialValues: {
             type: "",
@@ -62,9 +62,8 @@ const NouveauProduitVente = () => {
     });
     return (
         <React.Fragment>
-            <div className="page-content">
-                <Container fluid>
-                    <BreadCrumb title="Nouveau Produit" pageTitle="Produit Vente" />
+            <MainContentLayout title="Nouveau Produit" pageTitle="Produit Vente">
+                <Form>
                     <Card>
                         <CardBody className="card-body">
                             <Form className="needs-validation" noValidate>
@@ -81,25 +80,29 @@ const NouveauProduitVente = () => {
                                 <CustomInput type="file" label="Image 1" formik={formik} />
                                 <CustomInput type="file" label="Image 2" formik={formik} />
                                 <CustomInput type="file" label="Image 3" formik={formik} />
-                                <Row className="mb-3">
-                                    <CustomCheckBox label="Produit intervention" theme="form-check-secondary" />
-                                    <CustomCheckBox label="Piéce intervention" theme="form-check-secondary" />
-                                </Row>
-                                <Row className="mb-3">
-                                    <CustomCheckBox label="Afficher le Prix" theme="form-check-secondary" />
-                                    <CustomCheckBox label="Afficher la Quantité" theme="form-check-secondary" />
-                                </Row>
-                                <Row className="mb-3">
-                                    <CustomCheckBox label="Ajouter un nouveau produit aprés l'enregistrementent" theme="form-check-secondary" />
-                                </Row>
-                                <div className="text-end">
-                                    <button type="submit" className="btn btn-primary g-auto">Enregistrer</button>
-                                </div>
                             </Form>
                         </CardBody >
                     </Card>
-                </Container>
-            </div>
+                    <Card>
+                        <CardBody>
+                            <Row className="mb-3">
+                                <CustomCheckBox label="Produit intervention" theme="form-check-secondary" />
+                                <CustomCheckBox label="Piéce intervention" theme="form-check-secondary" />
+                            </Row>
+                            <Row className="mb-3">
+                                <CustomCheckBox label="Afficher le Prix" theme="form-check-secondary" />
+                                <CustomCheckBox label="Afficher la Quantité" theme="form-check-secondary" />
+                            </Row>
+                            <Row className="mb-3">
+                                <CustomCheckBox label="Ajouter un nouveau produit aprés l'enregistrementent" theme="form-check-secondary" />
+                            </Row>
+                            <div className="text-end">
+                                <button type="submit" className="btn btn-primary g-auto">Enregistrer</button>
+                            </div>
+                        </CardBody>
+                    </Card>
+                </Form>
+            </MainContentLayout>
         </React.Fragment>
     )
 }

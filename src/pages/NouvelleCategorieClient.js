@@ -1,10 +1,10 @@
 import React from "react";
-import BreadCrumb from "../Components/Common/BreadCrumb";
-import { Container, Card, CardBody, Form } from "reactstrap"
+import { Card, CardBody, Form } from "reactstrap"
 import { useFormik } from "formik";
 import * as Yup from "yup"
 import { CustomInput } from "../Components/CustomInput";
 import { CustomTextArea } from "../Components/CustomTextArea";
+import MainContentLayout from "../Components/MainContentLayout";
 
 const NouvelleCategorieClient = () => {
     const formik = useFormik({
@@ -23,22 +23,25 @@ const NouvelleCategorieClient = () => {
     )
     return (
         <React.Fragment>
-            <div className="page-content">
-                <Container fluid>
-                    <BreadCrumb title="Nouvelle Catégorie" pageTitle="Catégories Client" />
+            <MainContentLayout title="Nouvelle Catégorie" pageTitle="Catégories Client">
+                <Form className="needs-validation" onSubmit={formik.onSubmit} noValidate>
                     <Card>
                         <CardBody className="card-body">
-                            <Form className="needs-validation" onSubmit={formik.onSubmit} noValidate>
-                                <CustomInput type="text" label="Désignation" formik={formik} />
-                                <CustomTextArea label="Observation" formik={formik} />
-                                <div className="text-end">
-                                    <button type="submit" className="btn btn-primary g-auto">Enregistrer</button>
-                                </div>
-                            </Form>
+
+                            <CustomInput type="text" label="Désignation" formik={formik} />
+                            <CustomTextArea label="Observation" formik={formik} />
+
                         </CardBody >
                     </Card>
-                </Container>
-            </div>
+                    <Card>
+                        <CardBody>
+                            <div className="text-end">
+                                <button type="submit" className="btn btn-primary g-auto">Enregistrer</button>
+                            </div>
+                        </CardBody>
+                    </Card>
+                </Form>
+            </MainContentLayout>
         </React.Fragment>
     )
 }

@@ -1,10 +1,10 @@
 import React from "react";
-import BreadCrumb from "../Components/Common/BreadCrumb";
-import { Container, Col, Row, Card, CardBody, Label, Input, Form, FormFeedback } from "reactstrap"
+import { Card, CardBody, Form } from "reactstrap"
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { CustomInput } from "../Components/CustomInput";
 import { CustomTextArea } from "../Components/CustomTextArea";
+import MainContentLayout from "../Components/MainContentLayout";
 
 const NouvelleCategorieParentProduit = () => {
     // const SUPPORTED_FORMATS = [
@@ -37,26 +37,27 @@ const NouvelleCategorieParentProduit = () => {
     )
     return (
         <React.Fragment>
-            <div className="page-content">
-                <Container fluid>
-                    <BreadCrumb title="Nouvelle Catégorie Parent" pageTitle="Catégories Produit" />
+            <MainContentLayout title="Nouvelle Catégorie Parent" pageTitle="Catégories Produit">
+                <Form className="needs-validation" onSubmit={formik.onSubmit} noValidate>
                     <Card>
                         <CardBody className="card-body">
-                            <Form className="needs-validation" onSubmit={formik.onSubmit} noValidate>
-                                <CustomInput type="text" label="Désignation" formik={formik} />
-                                <CustomInput type="text" label="Désignation (en arabe)" formik={formik} isRtl={true} />
-                                <CustomTextArea label="Observation" formik={formik} />
-                                <CustomInput type="file" label="image" formik={formik}/>
-                                <div className="text-end">
-                                    <button type="submit" className="btn btn-primary g-auto">Enregistrer</button>
-                                </div>
-                            </Form>
+                            <CustomInput type="text" label="Désignation" formik={formik} />
+                            <CustomInput type="text" label="Désignation (en arabe)" formik={formik} isRtl={true} />
+                            <CustomTextArea label="Observation" formik={formik} />
+                            <CustomInput type="file" label="image" formik={formik} />
                         </CardBody >
                     </Card>
-                </Container>
-            </div>
+                    <Card>
+                        <CardBody>
+                            <div className="text-end">
+                                <button type="submit" className="btn btn-primary g-auto">Enregistrer</button>
+                            </div>
+                        </CardBody>
+                    </Card>
+                </Form>
+            </MainContentLayout>
         </React.Fragment>
-    )
+    );
 }
 
 export default NouvelleCategorieParentProduit;

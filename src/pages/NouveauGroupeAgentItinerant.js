@@ -1,18 +1,17 @@
 import { useFormik } from "formik";
-import * as Yup from "yup"
-import React from "react"
-import { Container, Card, CardBody, Form } from "reactstrap"
-import BreadCrumb from "../Components/Common/BreadCrumb";
+import * as Yup from "yup";
+import React from "react";
+import { Card, CardBody, Form } from "reactstrap";
 import { CustomInput } from "../Components/CustomInput";
 import { CustomSelect } from "../Components/CustomSelect";
 import { CustomTextArea } from "../Components/CustomTextArea";
-
-const agentOptions = [
-    { value: "Amine Fellahi", label: "Amine Fellahi" },
-    { value: "Ait Younes", label: "Ait Younes" }
-]
+import MainContentLayout from "../Components/MainContentLayout";
 
 const NouveauGroupeAgentItinerant = () => {
+    const agentOptions = [
+        { value: "Amine Fellahi", label: "Amine Fellahi" },
+        { value: "Ait Younes", label: "Ait Younes" }
+    ]
     const formik = useFormik({
         initialValues: {
             desingation: "",
@@ -28,23 +27,27 @@ const NouveauGroupeAgentItinerant = () => {
     })
     return (
         <React.Fragment>
-            <div className="page-content">
-                <Container fluid>
-                    <BreadCrumb title="Nouvelle Catégorie Parent" pageTitle="Catégories Produit" />
+            <MainContentLayout title="Nouvelle Catégorie Parent" pageTitle="Catégories Produit">
+                <Form className="needs-validation" noValidate>
                     <Card>
                         <CardBody className="card-body">
-                            <Form className="needs-validation" noValidate>
-                                <CustomInput type="text" label="Désignation" formik={formik} />
-                                <CustomSelect label="agentItinerant" formik={formik} options={agentOptions} isMulti={true} />
-                                <CustomTextArea label="Observation" formik={formik} />
-                                <div className="text-end">
-                                    <button type="submit" className="btn btn-primary g-auto">Enregistrer</button>
-                                </div>
-                            </Form>
+
+                            <CustomInput type="text" label="Désignation" formik={formik} />
+                            <CustomSelect label="agentItinerant" formik={formik} options={agentOptions} isMulti={true} />
+                            <CustomTextArea label="Observation" formik={formik} />
+
+
                         </CardBody>
                     </Card>
-                </Container>
-            </div>
+                    <Card>
+                        <CardBody>
+                            <div className="text-end">
+                                <button type="submit" className="btn btn-primary g-auto">Enregistrer</button>
+                            </div>
+                        </CardBody>
+                    </Card>
+                </Form>
+            </MainContentLayout>
         </React.Fragment>
     );
 }
