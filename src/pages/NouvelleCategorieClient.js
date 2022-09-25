@@ -5,17 +5,17 @@ import * as Yup from "yup"
 import { CustomInput } from "../Components/CustomInput";
 import { CustomTextArea } from "../Components/CustomTextArea";
 import MainContentLayout from "../Components/MainContentLayout";
+import { initializeFormik } from "../helpers/formik_helper";
 
 const NouvelleCategorieClient = () => {
+    const labels = [
+        { name: "Désignation", inputType: "text", isRequired: true },
+        { name: "Observation", inputType: "text" }
+    ]
+    const { initialValues: initialValues, validationSchema: validationSchema } = initializeFormik(labels)
     const formik = useFormik({
-        initialValues: {
-            designation: "",
-            observation: "",
-        },
-        validationSchema: Yup.object({
-            designation: Yup.string().required(),
-            observation: Yup.string()
-        }),
+        initialValues: initialValues,
+        validationSchema: Yup.object(validationSchema),
         onSubmit: values => {
             alert(JSON.stringify(values, null, 2));
         },
@@ -27,10 +27,8 @@ const NouvelleCategorieClient = () => {
                 <Form className="needs-validation" onSubmit={formik.onSubmit} noValidate>
                     <Card>
                         <CardBody className="card-body">
-
-                            <CustomInput type="text" label="Désignation" formik={formik} />
-                            <CustomTextArea label="Observation" formik={formik} />
-
+                            <CustomInput type="text" label={labels[0].name} formik={formik} />
+                            <CustomTextArea label={labels[1].name} formik={formik} />
                         </CardBody >
                     </Card>
                     <Card>

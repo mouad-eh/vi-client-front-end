@@ -6,43 +6,39 @@ import { CustomInput } from "../Components/CustomInput";
 import { CustomTextArea } from "../Components/CustomTextArea";
 import { CustomSelect } from "../Components/CustomSelect";
 import MainContentLayout from "../Components/MainContentLayout";
+import { initializeFormik } from "../helpers/formik_helper";
 
 
 const NouvelleCategorieProduit = () => {
     const categorieParentOptions = [
         { value: "option1", label: "option1" }, { value: "option2", label: "option2" }
     ]
+    const labels = [
+        { name: "Catégorie Parent", inputType: "text", isRequired: true },
+        { name: "Désignation", inputType: "text", isRequired: true },
+        { name: "Désignation (En Arabe)", inputType: "text" },
+        { name: "Observation", inputType: "text" },
+        { name: "Image", inputType: "image" }
+    ]
+    const { initialValues: initialValues, validationSchema: validationSchema } = initializeFormik(labels)
     const formik = useFormik({
-        initialValues: {
-            categorieParent: "",
-            designation: "",
-            designationEnArabe: "",
-            observation: "",
-            image: ""
-        },
-        validationSchema: Yup.object({
-            categorieParent: Yup.mixed(),
-            designation: Yup.string().required(),
-            designationEnArabe: Yup.string(),
-            observation: Yup.string(),
-            image: Yup.mixed()
-        }),
+        initialValues: initialValues,
+        validationSchema: Yup.object(validationSchema),
         onSubmit: values => {
             alert(JSON.stringify(values, null, 2));
         },
-    }
-    )
+    })
     return (
         <React.Fragment>
             <MainContentLayout title="Nouvelle Catégorie" pageTitle="Catégories Produit">
                 <Form className="needs-validation" onSubmit={formik.onSubmit} noValidate>
                     <Card>
                         <CardBody>
-                            <CustomSelect options={categorieParentOptions} label="Catégorie Parent" formik={formik} />
-                            <CustomInput type="text" label="Désignation" formik={formik} />
-                            <CustomInput type="text" label="Désignation (en arabe)" formik={formik} isRtl={true} />
-                            <CustomTextArea label="Observation" formik={formik} />
-                            <CustomInput type="file" label="Image" formik={formik} />
+                            <CustomSelect options={categorieParentOptions} label={labels[0].name} formik={formik} />
+                            <CustomInput type="text" label={labels[1].name} formik={formik} />
+                            <CustomInput type="text" label={labels[2].name} formik={formik} isRtl={true} />
+                            <CustomTextArea label={labels[3].name} formik={formik} />
+                            <CustomInput type="file" label={labels[4].name} formik={formik} />
                         </CardBody >
                     </Card>
                     <Card>
