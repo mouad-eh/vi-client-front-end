@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 
-const FILE_SIZE = 1000000
+const FILE_SIZE = 100000
 const SUPPORTED_FORMATS = ["image/jpg", "image/jpeg", "image/png"]
 
 export function initializeFormik(labels) {
@@ -14,12 +14,15 @@ export function initializeFormik(labels) {
                 if (label.isRequired) {
                     validationSchema[label.name] = validationSchema[label.name].required("vous avez oublié de remplir ce champ.")
                 }
-                break
-            case "image":
-                validationSchema[label.name] = Yup.mixed().
-                    test('fileSize', "la taille du photo dépasse 1MB.", value => value.size <= FILE_SIZE).
-                    test('fileType', "format de fichier non valable.", value => SUPPORTED_FORMATS.includes(value.type));
                 break;
+            case "image":
+                validationSchema[label.name] = Yup.mixed()
+                    .test("fileType", "format d'image non valide.", value => !value || (value && SUPPORTED_FORMATS.includes(value.type)))
+                    .test("fileSize", "la taille du fichier dépasse 1mo.", value => !value || (value && value.size <= FILE_SIZE))
+
+                break;
+            default:
+                validationSchema[label.name] = Yup.mixed()
         }
     }
     return { initialValues, validationSchema }

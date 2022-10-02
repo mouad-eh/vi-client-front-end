@@ -1,0 +1,6 @@
+export const UUID_USER = "c21031bf3e7186ae441a9a5ca7e9d09b"
+export const UUID_CLTSIRIUS = "BB5ZUD4L6XG4Z0Z4"
+export const NOUVELLE_CAT_CLIENT = "https://www.vi-client.com/WebAPI_front/Web_API_ADD.php?add_category_customer"
+export const NOUVELLE_CAT_PARENT_PRODUIT = "https://www.vi-client.com/WebAPI_front/Web_API_ADD.php?add_parent_category_product"
+export const LIST_CAT_PARENT_PRODUIT = "https://www.vi-client.com/WebAPI_front/Web_API_LIST.php?list_parent_category_product"
+export const NOUVELLE_CAT_PRODUIT = "https://www.vi-client.com/WebAPI_front/Web_API_ADD.php?add_sous_category_product"

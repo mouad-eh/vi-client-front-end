@@ -62,7 +62,7 @@ const NouveauUtilisateur = () => {
     return (
         <React.Fragment>
             <MainContentLayout title="Nouveau Utilisateur" pageTitle="Utilisateurs">
-                <Form className="needs-validation" onSubmit={formik.onSubmit} noValidate>
+                <Form className="needs-validation" onSubmit={formik.handleSubmit} noValidate>
                     <Card>
                         <CardBody>
                             <h5 className="card-title mb-3 flex-grow-1">Droits d'accès d'application</h5>

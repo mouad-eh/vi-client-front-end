@@ -1,26 +1,18 @@
 import React from "react";
-import { Row, Col, Label, FormFeedback } from "reactstrap"
-import Select from "react-select"
+import { Row, Col, Label, Input, FormFeedback } from "reactstrap"
 
-export const CustomSelect = ({ label, formik, options, isMulti }) => {
+export const CustomFileInput = ({ label, formik }) => {
     return (
         <React.Fragment>
             <Row className="mb-3">
                 <Col lg={3} >
                     <Label htmlFor={label} className="form-label">{label}</Label>
                 </Col>
-                <Col lg={4} md={6} >
-                    <Select
-                        id={label}
-                        name={label}
+                <Col lg={9} >
+                    <Input type="file" className="form-control" id={label}
                         // value={formik.values[label]}
-                        isMulti={isMulti ? isMulti : false}
-                        onChange={selectedOption => {
-                            formik.setFieldValue(label, selectedOption.value);
-                        }}
+                        onChange={e => formik.setFieldValue(label, e.target.files[0] ? e.target.files[0] : null)}
                         onBlur={formik.handleBlur}
-                        classNamePrefix="form-control"
-                        options={options}
                         invalid={formik.touched[label] && formik.errors[label] ? (true) : false}
                     />
                     {
