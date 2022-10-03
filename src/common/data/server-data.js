@@ -4,3 +4,4 @@ export const NOUVELLE_CAT_CLIENT = "https://www.vi-client.com/WebAPI_front/Web_A
 export const NOUVELLE_CAT_PARENT_PRODUIT = "https://www.vi-client.com/WebAPI_front/Web_API_ADD.php?add_parent_category_product"
 export const LIST_CAT_PARENT_PRODUIT = "https://www.vi-client.com/WebAPI_front/Web_API_LIST.php?list_parent_category_product"
 export const NOUVELLE_CAT_PRODUIT = "https://www.vi-client.com/WebAPI_front/Web_API_ADD.php?add_sous_category_product"
+export const NOUVELLE_ZONE_VENTE = "https://www.vi-client.com/WebAPI_front/Web_API_ADD.php?add_zone_vente"
